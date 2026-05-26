@@ -19,7 +19,7 @@ BestAuth — это демонстрационный веб-проект на .N
 
 ## Запуск
 
-1. Create .env file (copy example)
+1. Create .env file (copy example) and set up api url
 
 ```.env
 cd TestCrm
@@ -31,6 +31,9 @@ cp .env.example .env
 ```
 docker compose up -d --build
 ```
+
+3. frontend localhost:3000 and use default credentials (admin:admin)
+4. backend localhost:8080/scalar
 
 ## Структура проекта
 
