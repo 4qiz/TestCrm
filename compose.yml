@@ -19,7 +19,7 @@ services:
       - backend-net
 
   asp-api:
-    hostname: order-api
+    hostname: asp-api
     build:
       context: .
       dockerfile: BestAuth.Api/Dockerfile
@@ -35,6 +35,22 @@ services:
       - backend-net
     ports:
       - 8080:8080
+
+  nextapp:
+    container_name: nextapp
+    build:
+      context: ./frontend/my-app
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+    env_file:
+      - path: .env
+        required: true
+    restart: always
+    depends_on:
+      - asp-api
+    ports:
+      - 3000:3000
 
 networks:
   backend-net:

@@ -2,6 +2,21 @@
 
 BestAuth — это демонстрационный веб-проект на .NET, реализующий простую авторизацию и аутентификацию с JWT и refresh-токенами.
 
+<br />
+<div align="center">
+
+  <a>
+    <img src="./readme/auth.PNG" alt="main">
+  </a>
+  <br />
+  <a>
+    <img src="./readme/main.PNG" alt=".">
+  </a>
+
+</div>
+
+---
+
 ## Структура проекта
 
 - `BestAuth.Api/` — Web API приложение на ASP.NET Core.
