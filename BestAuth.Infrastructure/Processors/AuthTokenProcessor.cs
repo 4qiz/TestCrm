@@ -70,7 +70,7 @@ namespace BestAuth.Infrastructure.Processors
                 Expires = expireUtc,
                 HttpOnly = true,
                 IsEssential = true,
-                Secure = true,
+                Secure = false, // TODO true 
                 SameSite = SameSiteMode.Strict //TODO
             };
             _httpAccessor.HttpContext.Response.Cookies.Append(cookieName, value, options);
