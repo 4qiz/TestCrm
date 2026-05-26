@@ -1,0 +1,42 @@
+services:
+  postgres-db:
+    restart: unless-stopped
+    image: postgres:14-alpine3.18
+    hostname: postgres-db
+    volumes:
+      - ./ps-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "5432:5432"
+    networks:
+      - backend-net
+
+  asp-api:
+    hostname: order-api
+    build:
+      context: .
+      dockerfile: BestAuth.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    env_file:
+      - .env
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+    networks:
+      - backend-net
+    ports:
+      - 8080:8080
+
+networks:
+  backend-net:
+    driver: bridge
+    external: true

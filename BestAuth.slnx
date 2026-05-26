@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BestAuth.Api/BestAuth.Api.csproj" />
+  <Project Path="BestAuth.Application/BestAuth.Application.csproj" />
+  <Project Path="BestAuth.Domain/BestAuth.Domain.csproj" />
+  <Project Path="BestAuth.Infrastructure/BestAuth.Infrastructure.csproj" />
+</Solution>
