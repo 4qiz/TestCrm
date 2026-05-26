@@ -74,6 +74,17 @@ namespace BestAuth.Api
                 };
             });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("FrontendPolicy", policy =>
+                {
+                    policy.SetIsOriginAllowed(_ => true)
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials(); 
+                });
+            });
+
             builder.Services.AddAuthorization();
             builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
             builder.Services.AddHttpContextAccessor();
@@ -104,6 +115,7 @@ namespace BestAuth.Api
                 app.MapOpenApi();
                 app.MapScalarApiReference();
             }
+            app.UseCors("FrontendPolicy");
 
             app.UseExceptionHandler(_ => { });
             app.UseAuthentication();
