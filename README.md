@@ -17,6 +17,21 @@ BestAuth — это демонстрационный веб-проект на .N
 
 ---
 
+## Запуск
+
+1. Create .env file (copy example)
+
+```.env
+cd TestCrm
+cp .env.example .env
+```
+
+2. Start
+
+```
+docker compose up -d --build
+```
+
 ## Структура проекта
 
 - `BestAuth.Api/` — Web API приложение на ASP.NET Core.
